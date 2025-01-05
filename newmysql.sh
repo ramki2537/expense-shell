@@ -53,3 +53,4 @@ then
    VALIDATE $? "Setting Root password"
 else
    echo -e "Root password already setup.....$Y SKIPPING $N"
+fi
