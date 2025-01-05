@@ -65,7 +65,9 @@ VALIDATE $? "Downloading backend code"
 
 cd /app
 
-unzip /tmp/backend.zip $LOG_FILE_NAME
+rm -rf /app/*
+
+unzip /tmp/backend.zip -y $LOG_FILE_NAME
 VALIDATE $? "Unzip backend"
 
 npm install $LOG_FILE_NAME
@@ -87,6 +89,6 @@ VALIDATE $? "Reloading deamon service"
 systemctl enable backend &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling backend service"
 
-systemctl start backend &>>$LOG_FILE_NAME
+systemctl restart backend &>>$LOG_FILE_NAME
 VALIDATE $? "Starting backend serivce"
 
