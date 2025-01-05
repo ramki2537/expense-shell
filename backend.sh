@@ -67,10 +67,10 @@ cd /app
 
 rm -rf /app/*
 
-unzip /tmp/backend.zip -y $LOG_FILE_NAME
+unzip /tmp/backend.zip &>>$LOG_FILE_NAME
 VALIDATE $? "Unzip backend"
 
-npm install $LOG_FILE_NAME
+npm install &>>$LOG_FILE_NAME
 VALIDATE $? "Installing dependencies"
 
 cp /root/expense-shell/backend.service /etc/systemd/system/backend.service
