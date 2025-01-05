@@ -45,7 +45,9 @@ VALIDATE $?  "Enabling nodejs:20"
 dnf install nodejs -y &>>$LOG_FILE_NAME
 VALIDATE $? "Install nodejs"
 
-useradd expense &>>$LOG_FILE_NAME
+
+
+id expense &>>$LOG_FILE_NAME
 if [ $? -ne 0 ]
 then
     useradd expense &>>$LOG_FILE_NAME
@@ -63,10 +65,10 @@ VALIDATE $? "Downloading backend code"
 
 cd /app
 
-unzip /tmp/backend.zip
+unzip /tmp/backend.zip $LOG_FILE_NAME
 VALIDATE $? "Unzip backend"
 
-npm install
+npm install $LOG_FILE_NAME
 VALIDATE $? "Installing dependencies"
 
 cp /root/expense-shell/backend.service /etc/systemd/system/backend.service
