@@ -56,7 +56,7 @@ else
     echo -e "Expense user already exists...$Y SKIPPING $N"
 fi
 
-mkdir /app &>>$LOG_FILE_NAME
+mkdir -p /app &>>$LOG_FILE_NAME
 VALIDATE $? "Creating app directory"
 
 
